@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SkillController;
@@ -35,7 +36,7 @@ Route::middleware(['auth'])->group(function () {
     })->name('dashboard');
 
     Route::resource('/skills', SkillController::class);
-    Route::resource('/projects', ProjectController::class);
+    Route::resource('/posts', PostsController::class);
 });
 
 require __DIR__.'/auth.php';
