@@ -14,7 +14,7 @@
                         <i>1 minute ago</i>
                     </div>
                     <div>
-                        <img src="img/text.jpeg" alt="image">
+                        <img :src="post.image" alt="image">
                         <p class="pt-6">130 {{ post.content }}</p>
                     </div>
                     <div class="mt-5">
