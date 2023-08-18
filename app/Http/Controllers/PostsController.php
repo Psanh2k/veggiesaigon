@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Skills\CreateSkillRequest;
+use App\Http\Requests\Posts\CreatePostRequest;
 use App\Http\Resources\PostsReource;
 use App\Models\Posts;
 use Illuminate\Http\Request;
@@ -21,54 +21,60 @@ class PostsController extends Controller
 
     public function create()
     {
-        return Inertia::render('Skills/Create');
+        return Inertia::render('Posts/Create');
     }
 
-    public function store(CreateSkillRequest $request)
+    public function store(CreatePostRequest $request)
     {
         if ($request->hasFile('image')) {
-            $image = $request->file('image')->store('skills');
-            Skill::create([
-                'name'     => $request->name,
+            $image = $request->file('image')->store('posts');
+            Posts::create([
+                'title'     => $request->title,
                 'image'     => $image,
+                'content'   => $request->content,
             ]);
 
-            return Redirect::route('skills.index');
+            return Redirect::route('posts.index');
         }
 
         return Redirect::back();
     }
 
-    public function edit(Skill $skill)
+    public function edit(Posts $post)
     {
-        return Inertia::render('Skills/Edit', compact('skill'));
+        return Inertia::render('Posts/Edit', compact('post'));
     }
 
-    public function update(Request $request, Skill $skill)
+    public function update(Request $request, Posts $post)
     {
-        $image = $request->image;
         $request->validate([
-            'name'  => ['required', 'min:3'],
-            'image' => ['required', 'image'],
+            'title'         => ['required', 'min:3'],
+            'image'         => ['nullable', 'image'],
+            'content'       => ['required', 'min:3'],
         ]);
+
+        $dataUpdate = [
+            'title'         => $request->title,
+            'content'       => $request->content,
+        ];
 
         if ($request->hasFile('image')) {
             Storage::delete($request->image);
-            $image = $request->file('image')->store('skills');
-        }
-      
-        $skill->update([
-            'name'      => $request->name,
-            'image'     => $image,
-        ]);
+            $image = $request->file('image')->store('posts');
 
-        return Inertia::location(route('skills.index'));
+            $dataUpdate['image'] = $image;
+        }
+
+      
+        $post->update($dataUpdate);
+
+        return Inertia::location(route('posts.index'));
     }
 
-    public function destroy(Skill $skill)
+    public function destroy(Posts $post)
     {
-        Storage::delete($skill->image);
-        $skill->delete();
+        Storage::delete($post->image);
+        $post->delete();
 
         return Redirect::back();
     }

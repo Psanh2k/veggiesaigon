@@ -8,18 +8,15 @@ import Services from "@/Components/Frontend/Services.vue";
 import ContactMe from "@/Components/Frontend/ContactMe.vue";
 
 defineProps({
-  skills: Object,
+  posts: Object,
 });
 </script>
 
 <template>
   <Head title="Veggie SaiGon" />
   <FrontendLayout>
-    <!-- Hero primary -->
-    <Hero :skills="skills" />
-    <!-- Services secondary-->
-    <Services />
-    <!-- Contact primary -->
+    <Hero/>
+    <Services :posts="posts"/>
     <ContactMe/>
   </FrontendLayout>
 </template>

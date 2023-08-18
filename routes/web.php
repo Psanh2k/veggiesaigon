@@ -35,7 +35,6 @@ Route::middleware(['auth'])->group(function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    Route::resource('/skills', SkillController::class);
     Route::resource('/posts', PostsController::class);
 });
 

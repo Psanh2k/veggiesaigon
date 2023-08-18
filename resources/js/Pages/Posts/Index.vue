@@ -88,15 +88,15 @@
               </div>
           </div>
       </AuthenticatedLayout>
-  </template>
+</template>
   
 <script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head, Link } from '@inertiajs/vue3';
-  
-defineProps({
-    posts: Object,
-})
+    import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+    import { Head, Link } from '@inertiajs/vue3';
+    
+    defineProps({
+        posts: Object,
+    })
 </script>
   
 <style>

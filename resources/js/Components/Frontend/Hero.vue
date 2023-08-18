@@ -36,9 +36,7 @@
 </template>
 
 <script setup>
-    defineProps({
-        skills: Object,
-    })
+
 </script>
 
 <style>
