@@ -19,11 +19,6 @@
                                 <img class="h-auto max-w-full rounded-lg" src="/img/mediums/THD_HA.jpg" alt="">
                             </div>
                         </div>
-                        <div class="mt-10" style="width: 100%;">
-                            <button style="margin:auto;" class="btn btn-md bg-accent w-[300px] hover:bg-black dark:hover:text-dark-navy-100 md:btn-lg transition-all">
-                                More Infor
-                            </button>
-                        </div>
                     </div>
                     <div class="flex flex-1 justify-center items-center h-full rounded-lg mt-8 md:mt-0">
                         <img style="width:400px" class="p-2 lg:h-[45vh] rounded-full ring-2 ring-gray-300 dark:ring-gray-500" src="img/avatar.png" alt="avatar">
